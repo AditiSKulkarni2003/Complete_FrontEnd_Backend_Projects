@@ -1,0 +1,70 @@
+<h3>Employee List</h3>
+<div class="row">
+  <div class="col-5">
+
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>EmpID </th>
+        <th>EmpName </th>
+        <th>EmpCompany </th>
+        <th>EmpRole</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let emp of employees; let i=index">
+            <td>{{emp.id}}</td>
+            <td>{{emp.empName}}</td>
+            <td>{{emp.companyName}}</td>
+            <td>{{emp.role}}</td>
+          <td>
+
+            <button (click)="updateEmp(i)" class="btn btn-primary btn-sm">Update</button>
+
+            <button (click)="deleteEmployee(i)" class="btn btn-danger btn-sm">Delete</button>
+          </td>
+      </tr>
+      </tbody>
+    </table>
+  </div></div>
+
+<h3>{{ updateIndex !== null ? 'Update Employee' : 'Add Employee' }}</h3>
+
+<div class="row">
+  <div class="col-5">
+    <form (ngSubmit)="addEmployee()">
+      <div class="form-group">
+        <label for="empName">Employee Name</label>
+        <input type="text"  id="empName" class="form-control" [(ngModel)]="newEmployee.empName" name="empName" required/>
+
+
+      </div>
+      <div class="form-group">
+        <label for="companyName">Company Name</label>
+        <input type="text"  id="companyName" class="form-control" [(ngModel)]="newEmployee.companyName"  name="companyName"  required/>
+      </div>
+
+      <div class="form-group">
+        <label for="role">Role</label>
+        <input type="text"  id="role"  class="form-control"  [(ngModel)]="newEmployee.role"  name="role" required/>
+      </div>
+
+      <button type="submit" class="btn btn-success mt-2">
+        {{ updateIndex !== null ? 'Update' : 'Add' }} Employee
+      </button>
+    </form>
+
+  </div>
+</div>
+
+
+<!--<div class="employee-container">-->
+<!--  <div class="employee-item" *ngFor="let emp of employees">-->
+<!--    <div class="employee-detail"><strong>ID:</strong> {{ emp.id }}</div>-->
+<!--    <div class="employee-detail"><strong>Name:</strong> {{ emp.empName }}</div>-->
+<!--    <div class="employee-detail"><strong>Company:</strong> {{ emp.companyName }}</div>-->
+<!--    <div class="employee-detail"><strong>Role:</strong> {{ emp.role }}</div>-->
+<!--  </div>-->
+<!--</div>-->
+

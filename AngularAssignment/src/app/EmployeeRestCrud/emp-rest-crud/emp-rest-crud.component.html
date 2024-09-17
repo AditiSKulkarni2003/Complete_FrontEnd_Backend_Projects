@@ -1,0 +1,92 @@
+<table class="table table bordered">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Company</th>
+    <th>GCM Level</th>
+    <th>DASS ID</th>
+    <th>City</th>
+    <th>Pincode</th>
+    <th>Type</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let employee of employees">
+    <td>{{ employee.empId }}</td>
+    <td>{{ employee.empName }}</td>
+    <td>{{ employee.empCompanyName }}</td>
+    <td>{{ employee.gcmLevel }}</td>
+    <td>{{ employee.dassId }}</td>
+    <td>{{ employee.address?.city }}</td>
+    <td>{{ employee.address?.pinCode }}</td>
+    <td>{{ employee.empType }}</td>
+    <td>
+      <button (click)="selectEmployee(employee)" >Edit</button>
+      <button (click)="deleteEmployee(employee.empId!)">Delete</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<button class="add-employee-button" *ngIf="!isEditMode" (click)="toggleForm()">Add Employee</button>
+
+
+<form *ngIf="showForm" (ngSubmit)="isEditMode ? updateEmployee() : createEmployee()">
+  <label for="empName">Name:</label>
+  <input id="empName" [(ngModel)]="employee.empName" name="empName" required="true">
+
+  <label for="empCompanyName">Company Name:</label>
+  <input id="empCompanyName" [(ngModel)]="employee.empCompanyName" name="empCompanyName" required="true">
+
+  <label for="gcmLevel">GCM Level:</label>
+  <input id="gcmLevel" [(ngModel)]="employee.gcmLevel" name="gcmLevel" required>
+
+  <label for="dassId">DASS ID:</label>
+  <input id="dassId" [(ngModel)]="employee.dassId" name="dassId" required="true">
+
+  <div>
+    <label for="city">City:</label>
+    <input id="city" [(ngModel)]="employee.address.city" name="city">
+  </div>
+
+  <div>
+    <label for="pinCode">Pin Code:</label>
+    <input id="pinCode" [(ngModel)]="employee.address.pinCode" name="pinCode">
+  </div>
+
+  <label for="empType">Employee Type:</label>
+  <select id="empType" [(ngModel)]="employee.empType" name="empType" required>
+    <option value="ConsultantDelivery">ConsultantDelivery</option>
+    <option value="Manager">Manager</option>
+    <option value="AssociateConsultantDelivery">AssociateConsultantDelivery</option>
+  </select>
+
+
+  <div *ngIf="isConsultantDelivery(employee)">
+    <label for="consultingLevel">Consulting Level:</label>
+    <input id="consultingLevel" [(ngModel)]="employee.consultingLevel" name="consultingLevel">
+    <label for="leadProjects">Lead Projects:</label>
+    <input id="leadProjects" [(ngModel)]="employee.leadProjects" name="leadProjects">
+  </div>
+
+  <div *ngIf="isManager(employee)">
+    <label for="teamSize">Team Size:</label>
+    <input id="teamSize" [(ngModel)]="employee.teamSize" name="teamSize">
+    <label for="location">Location:</label>
+    <input id="location" [(ngModel)]="employee.location" name="location">
+  </div>
+
+  <div *ngIf="isAssociateConsultantDelivery(employee)">
+    <label for="skillSet">Skill Set:</label>
+    <input id="skillSet" [(ngModel)]="employee.skillSet" name="skillSet">
+    <label for="projectRole">Project Role:</label>
+    <input id="projectRole" [(ngModel)]="employee.projectRole" name="projectRole">
+    <label for="reportsTo">Reports To:</label>
+    <input id="reportsTo" [(ngModel)]="employee.reportsTo" name="reportsTo">
+  </div>
+
+  <button type="submit">{{ isEditMode ? 'Update' : 'Create' }}</button>
+  <button type="button" (click)="resetForm()">Reset</button>
+</form>

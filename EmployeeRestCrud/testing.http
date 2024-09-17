@@ -1,0 +1,139 @@
+
+GET  http://localhost:8089/EmployeeRestCrud/employees
+
+###
+GET http://localhost:8089/EmployeeRestCrud/employees/101
+###
+
+POST http://localhost:8089/EmployeeRestCrud/employees
+Content-Type: application/json
+
+{
+  "empName": "POQ",
+  "empCompanyName": "WGS",
+  "empBloodGroup": "A+",
+  "address": {
+    "buildingName": "AAC",
+    "city": "Mumbai",
+    "pinCode": "411045",
+    "mobNo": "1234567890"
+  },
+  "gcmLevel": "7",
+  "dassId": "D12345",
+  "empType": "ConsultantDelivery",
+  "consultingLevel": "Senior",
+  "leadProjects": "6"
+}
+###
+
+PUT http://localhost:8089/EmployeeRestCrud/employees/124
+Content-Type: application/json
+
+{
+"empName": "PQQ",
+"empCompanyName": "WGS",
+"empBloodGroup": "AB+",
+"address": {
+"buildingName": "AAA",
+"city": "Mumbai",
+"pinCode": "41105",
+"mobNo": "8492517854"
+},
+"gcmLevel": "7",
+"dassId": "1234ABCD",
+"empType": "ConsultantDelivery",
+"consultingLevel": "Senior",
+"leadProjects": "6"
+}
+
+###
+DELETE http://localhost:8089/EmployeeRestCrud/employees/103
+###
+
+
+
+POST http://localhost:8089/EmployeeRestCrud/employees
+Content-Type: application/json
+
+{
+  "empName": "Rushikesh",
+  "empCompanyName": "WGS",
+  "empBloodGroup": "B+",
+  "address": {
+    "buildingName": "ABA",
+    "city": "Nashik",
+    "pinCode": "400001",
+    "mobNo": "9975544220"
+  },
+  "gcmLevel": "5",
+  "dassId": "W12345F",
+  "empType": "AssociateConsultantDelivery",
+  "skillSet": "Java, Angular",
+  "projectRole": "Devloper",
+  "reportsTo": "Manager"
+
+}
+###
+PUT http://localhost:8089/EmployeeRestCrud/employees/109
+Content-Type: application/json
+
+{
+  "empName": "SM",
+  "empCompanyName": "WGS",
+  "empBloodGroup": "O+",
+  "address": {
+    "buildingName": "Building B",
+    "city": "Pune",
+    "pinCode": "400001",
+    "mobNo": "9976543210"
+  },
+  "gcmLevel": "3",
+  "dassId": "W12345F",
+  "empType": "AssociateConsultantDelivery",
+  "skillSet": "Java, Angular",
+  "projectRole": "Developer",
+  "reportsTo": "Manager"
+}
+###
+
+#
+#POST http://localhost:8089/EmployeeRestCrud/employees
+#Content-Type: application/json
+#
+#{
+#  "empName": "PG",
+#  "empCompanyName": "WGS",
+#  "empBloodGroup": "AB+",
+#  "address": {
+#    "buildingName": "ABC",
+#    "city": "Indore",
+#    "pinCode": "94105",
+#    "mobNo": "1234567890"
+#  },
+#  "gcmLevel": "8",
+#  "dassId": "W12345D",
+#  "empType": "Manager",
+#  "teamSize": "20",
+#  "location": "Pune"
+#}
+####
+#
+#PUT http://localhost:8089/EmployeeRestCrud/employees/107
+#Content-Type: application/json
+#
+#{
+#  "empName": "PG",
+#  "empCompanyName": "WGS",
+#  "empBloodGroup": "AB+",
+#  "address": {
+#    "buildingName": "ABC",
+#    "city": "Indore",
+#    "pinCode": "94105",
+#    "mobNo": "1234567890"
+#  },
+#  "gcmLevel": "8",
+#  "dassId": "W12345D",
+#  "empType": "Manager",
+#  "teamSize": "25",
+#  "location": "Pune"
+#}
